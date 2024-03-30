@@ -1,0 +1,12 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.data
+.env
+dist
+
+# ignore content folder because this repo is mainly about the framework of my blog, not its content
+content/
