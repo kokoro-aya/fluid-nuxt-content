@@ -6,24 +6,24 @@
     <div>Index of the blog</div>
 
     <div>
-      <span v-if="page > 0">
+      <span v-if="blogIndexPage > 0">
         <button @click="pageDecr"> Previous page </button>
       </span>
       <button @click="pageIncr"> Next page </button>
     </div>
 
     <div>
-      <span v-if="show > 0">
-        <button @click="showDecr"> {{ show - 1 }} articles/page </button>
-      </span>
-      <span v-if="show < 9">
-        <button @click="showIncr"> {{ show + 1 }} articles/page </button>
-      </span>
+      <div v-if="blogIndexShow > 0">
+        <p @click="showDecr"> {{ blogIndexShow - 1 }} articles/page </p>
+      </div>
+      <div v-if="blogIndexShow < 9">
+        <p @click="showIncr"> {{ blogIndexShow + 1 }} articles/page </p>
+      </div>
     </div>
 
     <hr>
 
-    <ContentList :query="mkQuery(page, show)" v-slot="{ list }">
+    <ContentList :query="mkQuery(blogIndexPage, blogIndexShow)" v-slot="{ list }">
       <div v-for="article in list" :key="article._path">
         <NuxtLink :to="article._path"><h2>{{ article.title }}</h2></NuxtLink>
         <p>{{ article.date }}</p>
@@ -39,15 +39,15 @@
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import CommonHeader from "~/views/CommonHeader.vue";
 
-const page = ref(0)
+const blogIndexPage = ref(0)
 
-const pageIncr = () => { page.value ++ }
-const pageDecr = () => { page.value -- }
+const pageIncr = () => { blogIndexPage.value ++ }
+const pageDecr = () => { blogIndexPage.value -- }
 
-const show = ref(5)
+const blogIndexShow = ref(5)
 
-const showIncr = () => { show.value ++ }
-const showDecr = () => { show.value -- }
+const showIncr = () => { blogIndexShow.value ++ }
+const showDecr = () => { blogIndexShow.value -- }
 
 const mkQuery = (page: number, show: number): QueryBuilderParams => {
   return {
