@@ -1,5 +1,8 @@
 <template>
   <main>
+
+    <CommonHeader />
+
     <div>Index of the blog</div>
 
     <div>
@@ -23,7 +26,10 @@
     <ContentList :query="mkQuery(page, show)" v-slot="{ list }">
       <div v-for="article in list" :key="article._path">
         <NuxtLink :to="article._path"><h2>{{ article.title }}</h2></NuxtLink>
+        <p>{{ article.date }}</p>
         <p>{{ article.description }}</p>
+        <p>Categories: {{ article.categories }}</p>
+        <p>Tags: {{ article.tags }}</p>
       </div>
     </ContentList>
   </main>
@@ -31,6 +37,7 @@
 <script setup lang="ts">
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
+import CommonHeader from "~/views/CommonHeader.vue";
 
 const page = ref(0)
 
