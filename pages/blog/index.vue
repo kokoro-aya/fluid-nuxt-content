@@ -37,7 +37,7 @@
 <script setup lang="ts">
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
-import CommonHeader from "~/views/CommonHeader.vue";
+import CommonHeader from "~/views/header/CommonHeader.vue";
 
 const blogIndexPage = ref(0)
 
