@@ -13,6 +13,8 @@
     "nuxt-icon": "^0.6.10"
   },
   "dependencies": {
-    "sass": "^1.74.1"
+    "bootstrap": "4.6.1",
+    "sass": "^1.74.1",
+    "sass-loader": "^14.2.0"
   }
 }
