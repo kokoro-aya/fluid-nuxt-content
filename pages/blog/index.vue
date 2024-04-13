@@ -3,7 +3,6 @@
   <CommonHeader />
   <main>
 
-    <div>Index of the blog</div>
     <div>
       <div>Index of the blog</div>
 
@@ -73,14 +72,25 @@
                 </div>
                 </div>
                 <nav>
-                  <span class="pagination" id="pagination">
-                    <span class="page-number current">1</span>
-                    <a class="page-number" @click="">2</a>
-                    <a class="page-number" @click="">3</a>
-                    <a class="extend next" rel="next" @click="">
+                  <div class="pagination" id="pagination">
+                    <div>
+                    <a v-if="blogIndexPage > 0"
+                       class="extend next" rel="next" @click="pageIncr">
+                      <i class="iconfont icon-arrowright">Prev</i>
+                    </a>
+                    </div>
+                    <div v-for="index in pageIndices()" :key="index">
+                      <span v-if="index == blogIndexPage"
+                            class="page-number current">{{index}}</span>
+                      <a v-else class="page-number" @click="pageJump(index)">{{index}}</a>
+                    </div>
+                    <div>
+                    <a v-if="blogIndexPage < pageIndices().length - 1"
+                       class="extend next" rel="next" @click="pageIncr">
                       <i class="iconfont icon-arrowright">Next</i>
                     </a>
-                  </span>
+                    </div>
+                  </div>
                 </nav>
               </div>
             </div>
@@ -119,13 +129,45 @@
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import CommonHeader from "~/views/header/CommonHeader.vue";
+import {onMounted} from "#imports";
+
+const pageCount = ref(0)
+
+onMounted(async () => {
+  const { data }  = await useAsyncData('blog', async () => {
+    let contents = await queryContent('/blog').find()
+    return contents.length
+  })
+  pageCount.value = data.value ?? 0
+})
+
+
+// (3 + 1) * 10 => 40 ... 40 ... 1 2 3 4
+// (3 + 1) * 10 => 40 ... 41 ...
+
+const pageIndices = (): number[] => {
+  const count = Math.ceil(pageCount.value / blogIndexShow.value)
+  return [...Array(count).keys()]
+}
+
+const pageJump = (i: number) => {
+  blogIndexPage.value = i
+}
+
+const pageIncr = () => {
+  if ((blogIndexPage.value + 1) * blogIndexShow.value < pageCount.value) {
+    blogIndexPage.value ++
+  }
+}
 
 const blogIndexPage = ref(0)
+const pageDecr = () => {
+  if (blogIndexPage.value > 0) {
+    blogIndexPage.value--
+  }
+}
 
-const pageIncr = () => { blogIndexPage.value ++ }
-const pageDecr = () => { blogIndexPage.value -- }
-
-const blogIndexShow = ref(5)
+const blogIndexShow = ref(10)
 
 const showIncr = () => { blogIndexShow.value ++ }
 const showDecr = () => { blogIndexShow.value -- }
