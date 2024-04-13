@@ -25,7 +25,7 @@
 <style scoped>
 
 #banner {
-  background: url("/assets/img/default.jpg") center center / cover no-repeat;
+  background: url("/img/default.jpg") center center / cover no-repeat;
   transform: translate3d(0px, 0px, 0px);
 }
 
