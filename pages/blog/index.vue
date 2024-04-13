@@ -2,28 +2,6 @@
 
   <CommonHeader />
   <main>
-
-    <div>
-      <div>Index of the blog</div>
-
-      <div>
-        <span v-if="blogIndexPage > 0">
-          <button @click="pageDecr"> Previous page </button>
-        </span>
-        <button @click="pageIncr"> Next page </button>
-      </div>
-
-      <div>
-        <div v-if="blogIndexShow > 0">
-          <p @click="showDecr"> {{ blogIndexShow - 1 }} articles/page </p>
-        </div>
-        <div v-if="blogIndexShow < 9">
-          <p @click="showIncr"> {{ blogIndexShow + 1 }} articles/page </p>
-        </div>
-      </div>
-    </div>
-
-
       <div class="container nopadding-x-md">
         <div id="board" >
           <ContentList :query="mkQuery(blogIndexPage, blogIndexShow)" v-slot="{ list }">
@@ -192,6 +170,10 @@ const mkQuery = (page: number, show: number): QueryBuilderParams => {
 #scroll-top-button {
   bottom: 20px;
   right: -7px;
+}
+
+#pagination {
+  margin-top: -20px;
 }
 
 </style>
