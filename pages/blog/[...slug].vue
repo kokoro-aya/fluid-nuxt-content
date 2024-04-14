@@ -12,5 +12,5 @@
   </main>
 </template>
 <script setup lang="ts">
-import CommonHeader from "~/views/CommonHeader.vue";
+import CommonHeader from "~/views/header/CommonHeader.vue";
 </script>
