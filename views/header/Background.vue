@@ -5,7 +5,7 @@
         <div class="banner-text text-center fade-in-up">
           <div class="h2">
             <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
-              Just want to explore faraway landscapes
+              {{ props.title }}
             </span>
             <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
           </div>
@@ -19,6 +19,11 @@
 </template>
 
 <script setup lang="ts">
+
+const props = defineProps({
+  title: String
+})
+
 
 </script>
 

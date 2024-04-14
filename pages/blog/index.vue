@@ -1,6 +1,6 @@
 <template>
 
-  <CommonHeader />
+  <CommonHeader :title="slogan" />
   <main>
       <div class="container nopadding-x-md">
         <div id="board" >
@@ -108,6 +108,8 @@
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {onMounted} from "#imports";
+
+const slogan = "Just want to explore faraway landscapes"
 
 const pageCount = ref(0)
 

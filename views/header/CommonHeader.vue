@@ -2,7 +2,7 @@
   <header>
     <div id="header-inner" class="header-inner">
       <NavBar />
-      <Background />
+      <Background :title="props.title" />
     </div>
   </header>
   <hr>
@@ -13,6 +13,10 @@
 
 import NavBar from "~/views/header/NavBar.vue";
 import Background from "~/views/header/Background.vue";
+
+const props = defineProps({
+  title: String
+})
 
 </script>
 
