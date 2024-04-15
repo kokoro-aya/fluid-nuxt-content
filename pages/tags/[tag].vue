@@ -73,20 +73,26 @@ onMounted(async () => {
 const groupByYears = (list: any[]): { year: string, group: { title: string, link: string, date: string, articleCount: number }[] }[] =>   {
   if (cachedQuery.value.length === 0) {
     let ret: { year: string, group: { title: string, link: string, date: string, articleCount: number }[] }[] = []
-    let count = 0
+
     for (let elem of list) {
-        let dateEval = elem.date
-        let year = dateEval.slice(0, 4)
-        let entry = ret.find(s => s.year === year)
-        if (entry !== undefined) {
-          entry.group.push({title: elem.title, link: elem._path, date: dateEval, articleCount: count })
-        } else {
-          ret.push({year, group: [{title: elem.title, link: elem._path, date: dateEval, articleCount: count }]})
-        }
-        count ++
+      let dateEval = elem.date
+      let year = dateEval.slice(0, 4)
+      let entry = ret.find(s => s.year === year)
+      if (entry !== undefined) {
+        entry.group.push({title: elem.title, link: elem._path, date: dateEval, articleCount: 0 })
+      } else {
+        ret.push({year, group: [{title: elem.title, link: elem._path, date: dateEval, articleCount: 0 }]})
+      }
     }
-    ret.sort((a, b) => a.year > b.year ? 1 : -1)
-    ret.forEach(e => e.group.sort((a, b) => a.date > b.date ? 1 : -1))
+    ret.sort((a, b) => a.year < b.year ? 1 : -1)
+    ret.forEach(e => e.group.sort((a, b) => a.date < b.date ? 1 : -1))
+    let count = 0
+    for (let yearGroup of ret) {
+      for (let item of yearGroup.group) {
+        item.articleCount = count
+        count++
+      }
+    }
     cachedQuery.value = ret
     return cachedQuery.value
   } else {
@@ -103,9 +109,9 @@ const showCurrentWindow = (): { year: string, group: { title: string, link: stri
       if (item.articleCount >= bottom && item.articleCount < top) {
         let entry = ret.find(s => s.year === yearGroup.year)
         if (entry !== undefined) {
-          entry.group.unshift(item)
+          entry.group.push(item)
         } else {
-          ret.unshift({
+          ret.push({
             year: yearGroup.year,
             group: [item]
           })
