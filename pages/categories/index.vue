@@ -40,9 +40,6 @@
     </MainContainer>
 
   </main>
-
-
-
 </template>
 <script setup lang="ts">
 
@@ -61,10 +58,6 @@ const expandGroup = (key: string) => {
   if (v !== undefined) {
     v.expanded = !v.expanded
   }
-}
-
-const renderCategories = (article: any) => {
-  return article.categories
 }
 
 // Specialized version of `groupBy` to group articles according to categoris
