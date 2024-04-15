@@ -6,7 +6,7 @@
         <div class="text-center tagcloud"
              >
           <a v-for="group in groupByTags(list)" :key="group.key"
-             :href="'/categories/' +group.key"
+             :href="'/tags/' +group.key"
              :style="'font-size: ' + renderFontSize(group.count) + '; color: ' + renderColor(group.count) ">
           {{group.key}}</a>
         </div>

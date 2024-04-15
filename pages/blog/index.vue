@@ -49,7 +49,7 @@
           <div class="pagination" id="pagination">
             <div>
               <a v-if="blogIndexPage > 0"
-                 class="extend next" rel="next" @click="pageIncr">
+                 class="extend next" rel="next" @click="pageDecr">
                 <i class="iconfont icon-arrowright">Prev</i>
               </a>
             </div>
