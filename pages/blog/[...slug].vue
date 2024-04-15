@@ -14,22 +14,7 @@
                 <article class="post-content mx-auto">
                   <h1 id="seo-header">{{doc.title}}</h1>
                   <div class="markdown-body">
-                    <div v-for="child of doc.body.children">
-                      <p v-if="child.tag === 'p'">
-                        <span v-for="innerChild of child.children">
-                          <span v-if="innerChild.type ==='text'">{{innerChild.value}}</span>
-                          <a v-else-if="innerChild.tag === 'a'"
-                             :href="innerChild.props.href"
-                             :rel="innerChild.props.rel[0]"
-                          >
-                            {{ innerChild.children[0].value }}
-                          </a>
-                        </span>
-                      </p>
-                      <pre v-if="child.tag === 'pre'">
-                        <code>{{child.props.code}}</code>
-                      </pre>
-                    </div>
+                    <ContentRenderer :value="doc" />
                   </div>
                   <hr>
                   <div>
