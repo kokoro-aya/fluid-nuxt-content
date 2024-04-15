@@ -14,7 +14,7 @@
 
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/">Home</NuxtLink>
+                      to="/blog">Home</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link"

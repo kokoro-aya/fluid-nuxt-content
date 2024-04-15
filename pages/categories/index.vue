@@ -1,77 +1,44 @@
 <template>
   <CommonHeader :title="pageName" />
   <main>
-    <div class="container nopadding-x-md">
-      <div id="board" >
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-10 m-auto">
-              <ContentList path="/blog" v-slot="{ list }">
-                <div class="category-list"
-                     v-for="group in groupByCategories(list)" :key="group.key">
-                  <div class="category row nomargin-x">
-                    <a class="category-item list-group-item category-item-action col-10 col-md-11 col-xm-11"
-                       :class="group.expanded ? '' : 'collapsed'"
-                       :title="group.key"
-                       role="tab"
-                       @click="expandGroup(group.key)"
-                    >
-                      {{group.key}}
-                      <span class="list-group-count"></span>
-                      <i class="iconfont icon-arrowright">></i>
-                    </a>
-                    <NuxtLink :to="'/categories/' + group.key" class="category-count col-2 col-md-1 col-xm-1">
-                      <i class="iconfont icon-articles">
-                      </i>
-                      <span>{{group.count}}</span>
-                    </NuxtLink>
+    <MainContainer>
+      <ContentList path="/blog" v-slot="{ list }">
+        <div class="category-list"
+             v-for="group in groupByCategories(list)" :key="group.key">
+          <div class="category row nomargin-x">
+            <a class="category-item list-group-item category-item-action col-10 col-md-11 col-xm-11"
+               :class="group.expanded ? '' : 'collapsed'"
+               :title="group.key"
+               role="tab"
+               @click="expandGroup(group.key)"
+            >
+              {{group.key}}
+              <span class="list-group-count"></span>
+              <i class="iconfont icon-arrowright">></i>
+            </a>
+            <NuxtLink :to="'/categories/' + group.key" class="category-count col-2 col-md-1 col-xm-1">
+              <i class="iconfont icon-articles">
+              </i>
+              <span>{{group.count}}</span>
+            </NuxtLink>
 
-                    <div class="category-collapse collapse"
-                         :class="group.expanded ? 'show' : ''"
-                         role="tabpanel">
-                      <div class="category-post-list"
-                           v-for="article in group.group" :key="article.title">
-                        <NuxtLink :to="article.link" class="list-group-item list-group-item-action"
-                           :title="article.title">
-                          <span class="category-post">{{article.title}}</span>
-                        </NuxtLink>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </ContentList>
+            <div class="category-collapse collapse"
+                 :class="group.expanded ? 'show' : ''"
+                 role="tabpanel">
+              <div class="category-post-list"
+                   v-for="article in group.group" :key="article.title">
+                <NuxtLink :to="article.link" class="list-group-item list-group-item-action"
+                          :title="article.title">
+                  <span class="category-post">{{article.title}}</span>
+                </NuxtLink>
+              </div>
             </div>
+
           </div>
         </div>
+      </ContentList>
+    </MainContainer>
 
-      </div>
-    </div>
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup"></i>
-    </a>
-      <!-- TODO: Search bar -->
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-content">
-          <a href="https://content.nuxt.com/" target="_blank" rel="nofollow noopener">
-            <span>Nuxt Content</span>
-          </a>
-          <i class="iconfont icon-love">@</i>
-          <a href="https://github.com/kokoro-aya" target="_blank" rel="nofollow noopener">
-            <span>aqua</span>
-          </a>
-          inspired by
-          <a href="https://hexo.io" target="_blank" rel="nofollow noopener">
-            <span>Hexo</span>
-          </a>
-          <i class="iconfont icon-love">@</i>
-          <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-            <span>Fluid</span>
-          </a>
-        </div>
-      </div>
-    </footer>
   </main>
 
 
@@ -81,6 +48,7 @@
 
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
+import MainContainer from "~/views/MainContainer.vue";
 
 const pageName = "Categories"
 
@@ -121,7 +89,7 @@ const groupByCategories = (list: any[]): { key: string, group: { title: string, 
         entry.count ++
       } else {
         // @ts-ignore
-        ret.push({ key: groupEval, group: [{title: elem.title, link: elem._path}], count: 0, expanded: false })
+        ret.push({ key: groupEval, group: [{title: elem.title, link: elem._path}], count: 1, expanded: false })
       }
     }
     cachedQuery.value = ret
