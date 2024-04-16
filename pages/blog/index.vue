@@ -38,7 +38,7 @@
                 <div v-for="tag in article.tags" :key="tag"
                      class="post-meta mr-3">
                   <i class="iconfont icon-tags"></i>
-                  <NuxtLink :to="'/categories/' + tag"
+                  <NuxtLink :to="'/tags/' + tag"
                             class="category-chain-item">{{ tag }}</NuxtLink>
                 </div>
               </div>
