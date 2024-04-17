@@ -1,42 +1,39 @@
-# Content v2 Minimal Starter
+# A reproduction of Hexo Fluid theme in vue.js with Nuxt Content
 
-Look at the [Content documentation](https://content-v2.nuxtjs.org/) to learn more.
+Simple layouts, navigations and pagination has been implemented.
 
-## Setup
+The project currently contains lots of bugs hence is not stable.
 
-Make sure to install the dependencies:
+Here are some next tasks to achieve:
 
-```bash
-# yarn
-yarn install
+- Extraction and definition of project variables
+- Fix and finalization of the markdown/code snippet rendering
+- Scrolling animations, typewriting, ...
+- Dynamically generated article pages
+- i18n
+- Dark mode
+- Icons
+- TOC
+- Searching
+- Footnotes
+- Refactor and rearrange of codes
+- Safari incompatibility (disappeared "to top" button and wrongly padded pagination indices)
 
-# npm
-npm install
+Some features are not currently planned:
 
-# pnpm
-pnpm install
-```
+- Discussion/comment zone
+- Analytics
+- Path to articles
+- Word count
+- Complex markdown contents (mathjax, ...)
 
-## Development Server
+Dependencies:
 
-Start the development server on http://localhost:3000
+- Vue.js/Nuxt 3
+- Nuxt Content
+- Bootstrap & sass
 
-```bash
-npm run dev
-```
+Maybe I could plan to implement a derivation of the current theme.
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
+Credits:
+- Idea, stylesheets and snippets: https://github.com/fluid-dev/hexo-theme-fluid

@@ -1,3 +1,8 @@
+/**
+ * Fluid CSS stylesheet
+ * Author : fluid-dev - https://github.com/fluid-dev/hexo-theme-fluid
+ */
+
 .anchorjs-link {
     text-decoration: none !important;
     transition: opacity 0.2s ease-in-out;
