@@ -10,3 +10,6 @@ dist
 
 # ignore content folder because this repo is mainly about the framework of my blog, not its content
 content/
+
+# ignore image assets
+public/img

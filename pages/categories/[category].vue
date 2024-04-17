@@ -48,6 +48,7 @@
 import {onMounted, useRoute} from "#imports";
 import MainContainer from "~/views/MainContainer.vue";
 import CommonHeader from "~/views/header/CommonHeader.vue";
+import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import {Ref} from "@vue/reactivity";
 
 const route = useRoute()
@@ -55,7 +56,7 @@ const route = useRoute()
 const localParam = ref("")
 
 const pageName = computed(() =>
-    "Archives"
+    `Categories - ${localParam.value}`
 )
 
 const cachedQuery: Ref<{ year: string, group: { title: string, link: string, date: string, articleCount: number }[] }[]> = ref([])
@@ -63,6 +64,7 @@ const cachedQuery: Ref<{ year: string, group: { title: string, link: string, dat
 onMounted(async () => {
   localParam.value = <string>route.params.category
   let data = await queryContent('/blog')
+      .where({ 'categories': { $contains: localParam.value } })
       .only(['title', '_path', 'date'])
       .find()
   cachedQuery.value = groupByYears(data)
