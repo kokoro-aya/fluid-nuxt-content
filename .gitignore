@@ -13,3 +13,6 @@ content/
 
 # ignore image assets
 public/img
+
+# ignore custom config setting
+fluid.config.ts
