@@ -1,6 +1,25 @@
 <template>
-  <CommonHeader :title="pageName" />
-
+  <PartialCommonHeader>
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <div class="h2">
+            <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
+              {{pageName}}
+            </span>
+              <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
+            </div>
+          </div>
+          <div class="scroll-down-bar">
+            <i class="iconfont">
+              <Icon name="ph:arrow-fat-down-bold" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </PartialCommonHeader>
   <main>
     <MainContainer>
       <div v-if="articleCount() <= 0">
@@ -53,6 +72,7 @@ import {onMounted, useRoute} from "#imports";
 import MainContainer from "~/views/MainContainer.vue";
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
+import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 
 const route = useRoute()
 
@@ -161,5 +181,9 @@ const renderMonthDay = (fullDate: string) => {
 
 
 <style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
 
 </style>

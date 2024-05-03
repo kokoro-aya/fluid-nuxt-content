@@ -1,6 +1,26 @@
 <template>
 
-  <CommonHeader :title="slogan" />
+  <FullCommonHeader >
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <div class="h2">
+            <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
+              Just want to explore faraway landscapes
+            </span>
+              <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
+            </div>
+          </div>
+          <div class="scroll-down-bar">
+            <i class="iconfont">
+              <Icon name="ph:arrow-fat-down-bold" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </FullCommonHeader>
   <main>
     <MainContainer>
       <ContentList :query="mkQuery(blogIndexPage, blogIndexShow)" v-slot="{ list }">
@@ -86,6 +106,7 @@ import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {onMounted} from "#imports";
 import MainContainer from "~/views/MainContainer.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 
 const slogan = "Just want to explore faraway landscapes"
 
@@ -142,6 +163,14 @@ const mkQuery = (page: number, show: number): QueryBuilderParams => {
 </script>
 
 <style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
+
+#header-inner {
+  height: 100vh;
+}
 
 #pagination {
   margin-top: -20px;
