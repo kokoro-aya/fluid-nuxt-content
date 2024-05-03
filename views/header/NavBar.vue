@@ -1,5 +1,7 @@
 <template>
-  <nav id="navbar" class="navbar fixed-top navbar-expand-lg scrolling-navbar top-nav-collapse">
+  <nav id="navbar" class="navbar fixed-top navbar-expand-lg scrolling-navbar"
+       :class="collapsed ? '' : 'navbar-col-show'"
+  >
     <div class="container">
       <NuxtLink class="navbar-brand"
                 to="/"><strong>Forgotten Land</strong></NuxtLink>

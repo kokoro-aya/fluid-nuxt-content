@@ -22,6 +22,8 @@
 
 <script setup lang="ts">
 
+import {onMounted} from "#imports";
+
 const props = defineProps({
   title: String
 })
@@ -30,11 +32,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-
-#banner {
-  background: url("/img/default.jpg") center center / cover no-repeat;
-  transform: translate3d(0px, 0px, 0px);
-}
 
 #mask {
   background-color: rgba(0, 0, 0, 0.3);
