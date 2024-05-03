@@ -1,6 +1,7 @@
 <template>
   <main>
     <PartialCommonHeader >
+      <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
       <div id="banner" class="banner" parallax="true"
            :style="'transform: translate3d(0px, ' + offsetTop + 'px, 0px);'"
       >
@@ -133,6 +134,7 @@ import CommonHeader from "~/views/header/CommonHeader.vue";
 import Footer from "~/views/Footer.vue";
 import {onMounted} from "#imports";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
 
 const renderDate = (date: string) => {
   const dateParts = date.split("T")[0].split('-')

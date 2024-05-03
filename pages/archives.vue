@@ -1,5 +1,6 @@
 <template>
   <PartialCommonHeader>
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
     <div id="banner" class="banner" parallax="true">
       <div class="full-bg-img">
         <div id="mask" class="mask flex-center">
@@ -73,6 +74,8 @@ import MainContainer from "~/views/MainContainer.vue";
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 
 const route = useRoute()
 
@@ -176,6 +179,21 @@ const pageDecr = () => {
 const renderMonthDay = (fullDate: string) => {
   return fullDate.slice(5, 10)
 }
+
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
 
 </script>
 

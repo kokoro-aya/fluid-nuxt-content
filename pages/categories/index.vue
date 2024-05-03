@@ -1,5 +1,6 @@
 <template>
   <PartialCommonHeader>
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
     <div id="banner" class="banner" parallax="true">
       <div class="full-bg-img">
         <div id="mask" class="mask flex-center">
@@ -70,6 +71,9 @@ import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
 import MainContainer from "~/views/MainContainer.vue";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import {onMounted} from "#imports";
 
 const pageName = "Categories"
 
@@ -115,6 +119,21 @@ const groupByCategories = (list: any[]): { key: string, group: { title: string, 
     return cachedQuery.value
   }
 }
+
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
 
 </script>
 <style scoped>

@@ -1,7 +1,6 @@
 <template>
   <header>
     <div id="header-inner" class="header-inner">
-      <NavBar />
       <slot />
     </div>
   </header>

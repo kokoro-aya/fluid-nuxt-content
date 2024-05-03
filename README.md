@@ -8,11 +8,11 @@ Here are some next tasks to achieve:
 
 - Extraction and definition of project variables
 - Fix and finalization of the markdown/code snippet rendering
-- Scrolling animations, typewriting, ...
+- ~~Scrolling animations~~, typewriting, ...
 - Dynamically generated article pages
 - i18n
 - Dark mode
-- Icons
+- [x] Icons
 - TOC
 - Searching
 - Footnotes
