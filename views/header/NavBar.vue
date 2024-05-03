@@ -14,42 +14,62 @@
 
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/blog">Home</NuxtLink>
+                      to="/blog">
+              <i class="iconfont"><Icon name="ic:round-house" /></i>
+              Home</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/archives">Archives</NuxtLink>
+                      to="/archives">
+              <i class="iconfont"><Icon name="ri:archive-fill" /></i>
+              Archives</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/portfolio">Portfolio</NuxtLink>
+                      to="/portfolio">
+              <i class="iconfont"><Icon name="heroicons:puzzle-piece" /></i>
+              Portfolio</NuxtLink>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" @click="dropdownCollapsed = !dropdownCollapsed">Collections</a>
             <div :class="dropdownCollapsed ? '': 'show'" class="dropdown-menu dropdown-collapse">
               <NuxtLink class="dropdown-item"
-                        to="/categories">Categories</NuxtLink>
+                        to="/categories">
+                <i class="iconfont"><Icon name="tabler:category-2" /></i>
+                Categories</NuxtLink>
               <NuxtLink class="dropdown-item"
-                        to="/tags">Tags</NuxtLink>
+                        to="/tags">
+                <i class="iconfont"><Icon name="mdi:tag-multiple-outline" /></i>
+                Tags</NuxtLink>
               <NuxtLink class="dropdown-item"
-                        to="/privacy">Privacy</NuxtLink>
+                        to="/privacy">
+                <i class="iconfont"><Icon name="ic:outline-privacy-tip" /></i>
+                Privacy</NuxtLink>
               <NuxtLink class="dropdown-item"
-                        to="/licences">Licences</NuxtLink>
+                        to="/licences">
+                <i class="iconfont"><Icon name="tabler:copyright" /></i>
+                Licences</NuxtLink>
             </div>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/friends">Friends</NuxtLink>
+                      to="/friends">
+              <i class="iconfont"><Icon name="ri:links-fill" /></i>
+              Friends</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link"
-                      to="/about">About</NuxtLink>
+                      to="/about">
+              <i class="iconfont"><Icon name="material-symbols:person" /></i>
+              About</NuxtLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Search</a>
+            <a class="nav-link"><i><Icon name="ic:outline-search" /></i></a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" @click="langDropdownCollapsed = !langDropdownCollapsed">Lang</a>
+            <a class="nav-link dropdown-toggle" @click="langDropdownCollapsed = !langDropdownCollapsed">
+              <i><Icon name="ion:language" /></i>
+            </a>
             <div :class="langDropdownCollapsed ? '': 'show'" class="dropdown-menu dropdown-collapse">
               <a class="dropdown-item">简体中文</a>
               <a class="dropdown-item">正體中文</a>
@@ -57,7 +77,9 @@
             </div>
           </li>
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link">Dark</a>
+            <a class="nav-link">
+              <i><Icon name="material-symbols:sunny" /></i>
+            </a>
           </li>
         </ul>
       </div>
