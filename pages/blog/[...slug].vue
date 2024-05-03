@@ -101,12 +101,14 @@
         </div>
 
       </div>
+      <Footer />
 
     </ContentDoc>
   </main>
 </template>
 <script setup lang="ts">
 import CommonHeader from "~/views/header/CommonHeader.vue";
+import Footer from "~/views/Footer.vue";
 
 const renderDate = (date: string) => {
   const dateParts = date.split("T")[0].split('-')
