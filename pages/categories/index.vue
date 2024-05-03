@@ -14,10 +14,13 @@
             >
               {{group.key}}
               <span class="list-group-count"></span>
-              <i class="iconfont icon-arrowright">></i>
+              <i class="iconfont">
+                <Icon name="material-symbols:arrow-forward-ios-rounded" />
+              </i>
             </a>
             <NuxtLink :to="'/categories/' + group.key" class="category-count col-2 col-md-1 col-xm-1">
-              <i class="iconfont icon-articles">
+              <i class="iconfont">
+                <Icon name="pixelarticons:article-multiple" />
               </i>
               <span>{{group.count}}</span>
             </NuxtLink>
@@ -93,7 +96,7 @@ const groupByCategories = (list: any[]): { key: string, group: { title: string, 
 }
 
 </script>
-<style>
+<style scoped>
 
 .category {
   margin-bottom: 1rem;

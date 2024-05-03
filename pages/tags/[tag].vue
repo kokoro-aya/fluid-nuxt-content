@@ -24,7 +24,9 @@
           <div>
             <a v-if="blogIndexPage > 0"
                class="extend next" rel="next" @click="pageDecr">
-              <i class="iconfont icon-arrowright">Prev</i>
+              <i class="iconfont">
+                <Icon name="material-symbols:keyboard-double-arrow-left-rounded" />
+              </i>
             </a>
           </div>
           <div v-for="index in pageIndices()" :key="index">
@@ -35,7 +37,9 @@
           <div>
             <a v-if="blogIndexPage < pageIndices().length - 1"
                class="extend next" rel="next" @click="pageIncr">
-              <i class="iconfont icon-arrowright">Next</i>
+              <i class="iconfont">
+                <Icon name="material-symbols:keyboard-double-arrow-right-rounded" />
+              </i>
             </a>
           </div>
         </div>

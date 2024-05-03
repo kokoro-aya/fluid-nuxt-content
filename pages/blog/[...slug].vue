@@ -20,7 +20,9 @@
                   <div>
                     <div class="post-metas my-3">
                       <div class="post-meta mr-3 d-flex align-items-center">
-                        <i class="iconfont icon-category"></i>
+                        <i class="iconfont">
+                          <Icon name="tabler:category-2" />
+                        </i>
                         <span class="category-chains">
                           <span class="category-chain">
                             <a href="/categories/">{{ doc.categories[0] }}</a>
@@ -28,7 +30,9 @@
                         </span>
                       </div>
                       <div class="post-meta">
-                        <i class="iconfont icon-tags"></i>
+                        <i class="iconfont">
+                          <Icon name="mdi:tag-multiple-outline" />
+                        </i>
                           <a v-for="tag in doc.tags"
                              :href="'/tags/' + tag">
                             #{{tag}}
@@ -54,23 +58,35 @@
                           <div>
                             <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                               <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                                <i class="iconfont icon-by"></i>
+                                <i class="iconfont icon-by">
+                                  <Icon name="cib:creative-commons-by" />
+                                </i>
                               </span>
                             </a>
                             <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                               <span class="hint--top hint--rounded" aria-label="NC - 非商业使用">
-                                <i class="iconfont icon-nc"></i>
+                                <i class="iconfont icon-nc">
+                                  <Icon name="cib:creative-commons-nc" />
+                                </i>
                               </span>
                             </a>
                             <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
                               <span class="hint--top hint--rounded" aria-label="ND - 禁止演绎">
-                                <i class="iconfont icon-nd"></i>
+                                <i class="iconfont icon-nd">
+                                  <Icon name="cib:creative-commons-nd" />
+                                </i>
                               </span>
                             </a>
                           </div>
                         </div>
                       </div>
-                      <div class="license-icon iconfont"></div>
+                      <div id="cc-large-icon">
+                        <i>
+                          <Icon name="cib:creative-commons"
+                                size="200px"
+                          />
+                        </i>
+                      </div>
                     </div>
                     <!-- TODO: prev/next cannot be currently implemented -->
                   </div>
@@ -97,3 +113,29 @@ const renderDate = (date: string) => {
   return `${dateParts[0]}年${dateParts[1]}月${dateParts[2]}日`
 }
 </script>
+
+<style scoped>
+
+span .iconfont {
+  padding: 3px;
+}
+
+/* TODO: fix this CC icon to fit the window size */
+
+#cc-large-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#cc-large-icon i {
+  display: block;
+  height: 200px;
+  width: 200px;
+  line-height: 1;
+  opacity: 0.1;
+  position: relative;
+  z-index: -1;
+}
+
+</style>

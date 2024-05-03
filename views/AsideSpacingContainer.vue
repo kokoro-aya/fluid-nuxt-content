@@ -10,7 +10,11 @@ import Footer from "~/views/Footer.vue";
     </div>
   </div>
   <a id="scroll-top-button" href="#" role="button">
-    <i class="iconfont icon-arrowup"></i>
+    <i class="iconfont">
+      <Icon name="material-symbols:keyboard-arrow-up-rounded"
+            size="32px"
+      />
+    </i>
   </a>
   <!-- TODO: Search bar -->
   <Footer />

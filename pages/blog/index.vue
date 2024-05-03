@@ -21,11 +21,15 @@
               </NuxtLink>
               <div class="index-btm post-metas">
                 <div class="post-meta mr-3">
-                  <i class="iconfont icon-date"></i>
+                  <i class="iconfont">
+                    <Icon name="material-symbols:calendar-month" />
+                  </i>
                   <time :datetime="article.date" pubdate>{{ article.date.slice(0, 10) }}</time>
                 </div>
                 <div class="post-meta mr-3 d-flex align-items-center">
-                  <i class="iconfont icon-category"></i>
+                  <i class="iconfont">
+                    <Icon name="tabler:category-2" />
+                  </i>
                   <span v-for="category in article.categories" :key="category"
                         class="category-chains">
                               <span class="category-chain">
@@ -37,7 +41,9 @@
                 </div>
                 <div v-for="tag in article.tags" :key="tag"
                      class="post-meta mr-3">
-                  <i class="iconfont icon-tags"></i>
+                  <i class="iconfont">
+                    <Icon name="mdi:tag-multiple-outline" />
+                  </i>
                   <NuxtLink :to="'/tags/' + tag"
                             class="category-chain-item">{{ tag }}</NuxtLink>
                 </div>
@@ -50,7 +56,9 @@
             <div>
               <a v-if="blogIndexPage > 0"
                  class="extend next" rel="next" @click="pageDecr">
-                <i class="iconfont icon-arrowright">Prev</i>
+                <i class="iconfont">
+                  <Icon name="material-symbols:keyboard-double-arrow-left-rounded" />
+                </i>
               </a>
             </div>
             <div v-for="index in pageIndices()" :key="index">
@@ -61,7 +69,9 @@
             <div>
               <a v-if="blogIndexPage < pageIndices().length - 1"
                  class="extend next" rel="next" @click="pageIncr">
-                <i class="iconfont icon-arrowright">Next</i>
+                <i class="iconfont">
+                  <Icon name="material-symbols:keyboard-double-arrow-right-rounded" />
+                </i>
               </a>
             </div>
           </div>
@@ -131,7 +141,7 @@ const mkQuery = (page: number, show: number): QueryBuilderParams => {
 
 </script>
 
-<style>
+<style scoped>
 
 #pagination {
   margin-top: -20px;

@@ -11,7 +11,9 @@
           </div>
         </div>
         <div class="scroll-down-bar">
-          <i class="iconfont icon-arrow-down">_</i>
+          <i class="iconfont">
+            <Icon name="ph:arrow-fat-down-bold" />
+          </i>
         </div>
       </div>
     </div>
