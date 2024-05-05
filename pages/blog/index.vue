@@ -7,10 +7,7 @@
         <div id="mask" class="mask flex-center">
           <div class="banner-text text-center fade-in-up">
             <div class="h2">
-            <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
-              Just want to explore faraway landscapes
-            </span>
-              <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
+              <span id="subtitle"></span>
             </div>
           </div>
           <div class="scroll-down-bar">
@@ -104,12 +101,11 @@
 <script setup lang="ts">
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
-import CommonHeader from "~/views/header/CommonHeader.vue";
 import {onMounted} from "#imports";
+import Typed from 'typed.js';
 import MainContainer from "~/views/MainContainer.vue";
 import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
-import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 
 const slogan = "Just want to explore faraway landscapes"
 
@@ -121,6 +117,11 @@ onMounted(async () => {
     return contents.length
   })
   pageCount.value = data.value ?? 0
+
+  const typed = new Typed('#subtitle', {
+    strings: [slogan],
+    typeSpeed: 50,
+  })
 })
 
 
