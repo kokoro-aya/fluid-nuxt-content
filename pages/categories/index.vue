@@ -12,11 +12,6 @@
               <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
             </div>
           </div>
-          <div class="scroll-down-bar">
-            <i class="iconfont">
-              <Icon name="ph:arrow-fat-down-bold" />
-            </i>
-          </div>
         </div>
       </div>
     </div>
