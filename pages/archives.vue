@@ -5,12 +5,7 @@
       <div class="full-bg-img">
         <div id="mask" class="mask flex-center">
           <div class="banner-text text-center fade-in-up">
-            <div class="h2">
-            <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
-              {{pageName}}
-            </span>
-              <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
-            </div>
+            <TypeSpan :typewrite-text="pageName" />
           </div>
           <div class="scroll-down-bar">
             <i class="iconfont">
@@ -76,6 +71,7 @@ import {Ref} from "@vue/reactivity";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
 import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const route = useRoute()
 

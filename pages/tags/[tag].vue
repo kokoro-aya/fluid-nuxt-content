@@ -5,11 +5,9 @@
       <div class="full-bg-img">
         <div id="mask" class="mask flex-center">
           <div class="banner-text text-center fade-in-up">
+            <!-- similar to category headline -->
             <div class="h2">
-            <span id="subtitle" data-typed-text="Just want to explore faraway landscapes">
-              {{pageName}}
-            </span>
-              <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
+              <span id="subtitle"></span>
             </div>
           </div>
         </div>
@@ -72,6 +70,8 @@ import {Ref} from "@vue/reactivity";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
 import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
+import Typed from "typed.js";
 
 const route = useRoute()
 
@@ -90,6 +90,12 @@ onMounted(async () => {
       .only(['title', '_path', 'date'])
       .find()
   cachedQuery.value = groupByYears(data)
+
+  // Setup of typed.js object here
+  const typed = new Typed('#subtitle', {
+    strings: [pageName.value],
+    typeSpeed: 50,
+  })
 })
 
 const groupByYears = (list: any[]): { year: string, group: { title: string, link: string, date: string, articleCount: number }[] }[] =>   {

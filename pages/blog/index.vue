@@ -6,9 +6,7 @@
       <div class="full-bg-img">
         <div id="mask" class="mask flex-center">
           <div class="banner-text text-center fade-in-up">
-            <div class="h2">
-              <span id="subtitle"></span>
-            </div>
+            <TypeSpan :typewrite-text="slogan" />
           </div>
           <div class="scroll-down-bar">
             <i class="iconfont">
@@ -106,6 +104,7 @@ import Typed from 'typed.js';
 import MainContainer from "~/views/MainContainer.vue";
 import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const slogan = "Just want to explore faraway landscapes"
 
@@ -117,11 +116,6 @@ onMounted(async () => {
     return contents.length
   })
   pageCount.value = data.value ?? 0
-
-  const typed = new Typed('#subtitle', {
-    strings: [slogan],
-    typeSpeed: 50,
-  })
 })
 
 

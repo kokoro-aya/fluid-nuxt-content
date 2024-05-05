@@ -10,12 +10,7 @@
         <div class="full-bg-img">
           <div id="mask" class="mask flex-center">
             <div class="banner-text text-center fade-in-up">
-              <div class="h2">
-            <span id="subtitle" :data-typed-text="doc.title">
-              {{doc.title}}
-            </span>
-                <span class="typed-cursor typed-cursor--blink" aria-hidden="true">_</span>
-              </div>
+              <TypeSpan :typewrite-text="doc.title" />
             </div>
           </div>
         </div>
@@ -84,6 +79,7 @@ import {onMounted} from "#imports";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
 import LicenseBox from "~/views/LicenseBox.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 
 let scrollHeight = ref(0)
