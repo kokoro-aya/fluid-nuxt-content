@@ -9,13 +9,13 @@ Here are some next tasks to achieve:
 - Extraction and definition of project variables
 - Fix and finalization of the markdown/code snippet rendering
 - ~~Scrolling animations~~, typewriting, ...
-- Dynamically generated article pages
-- i18n
-- Dark mode
+- [x] Dynamically generated article pages
+- [i18n] i18n
+- [dark] Dark mode
 - [x] Icons
 - TOC
-- Searching
-- Footnotes
+- [search] Searching
+- [x] Footnotes
 - Refactor and rearrange of codes
 - Safari incompatibility (disappeared "to top" button and wrongly padded pagination indices)
 
