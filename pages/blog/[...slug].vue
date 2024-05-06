@@ -114,26 +114,6 @@ onUnmounted(() => {
   margin-top: -4rem;
 }
 
-span .iconfont {
-  padding: 3px;
-}
 
-/* TODO: fix this CC icon to fit the window size */
-
-#cc-large-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-#cc-large-icon i {
-  display: block;
-  height: 200px;
-  width: 200px;
-  line-height: 1;
-  opacity: 0.1;
-  position: relative;
-  z-index: -1;
-}
 
 </style>
