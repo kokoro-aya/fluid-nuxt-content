@@ -1,5 +1,16 @@
 <template>
-  <CommonHeader :title="pageName" />
+  <PartialCommonHeader>
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <TypeSpan :typewrite-text="pageName" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </PartialCommonHeader>
   <main>
     <MainContainer>
       <ContentList path="/blog" v-slot="{ list }">
@@ -20,6 +31,11 @@
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
 import MainContainer from "~/views/MainContainer.vue";
+import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import {onMounted} from "#imports";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const pageName = "Tags"
 
@@ -81,8 +97,28 @@ const renderColor = (n: number) => {
     return "#337ab7"
   }
 }
+
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
+
 </script>
 
 <style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
 
 </style>

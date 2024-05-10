@@ -1,6 +1,21 @@
 <template>
-  <CommonHeader :title="pageName" />
-
+  <PartialCommonHeader>
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <TypeSpan :typewrite-text="pageName" />
+          </div>
+          <div class="scroll-down-bar">
+            <i class="iconfont">
+              <Icon name="ph:arrow-fat-down-bold" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </PartialCommonHeader>
   <main>
     <MainContainer>
       <div v-if="articleCount() <= 0">
@@ -24,7 +39,9 @@
           <div>
             <a v-if="blogIndexPage > 0"
                class="extend next" rel="next" @click="pageDecr">
-              <i class="iconfont icon-arrowright">Prev</i>
+              <i class="iconfont">
+                <Icon name="material-symbols:keyboard-double-arrow-left-rounded" />
+              </i>
             </a>
           </div>
           <div v-for="index in pageIndices()" :key="index">
@@ -35,7 +52,9 @@
           <div>
             <a v-if="blogIndexPage < pageIndices().length - 1"
                class="extend next" rel="next" @click="pageIncr">
-              <i class="iconfont icon-arrowright">Next</i>
+              <i class="iconfont">
+                <Icon name="material-symbols:keyboard-double-arrow-right-rounded" />
+              </i>
             </a>
           </div>
         </div>
@@ -49,6 +68,10 @@ import {onMounted, useRoute} from "#imports";
 import MainContainer from "~/views/MainContainer.vue";
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
+import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const route = useRoute()
 
@@ -153,9 +176,28 @@ const renderMonthDay = (fullDate: string) => {
   return fullDate.slice(5, 10)
 }
 
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
+
 </script>
 
 
 <style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
 
 </style>

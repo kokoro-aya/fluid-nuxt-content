@@ -1,5 +1,16 @@
 <template>
-  <CommonHeader :title="pageName" />
+  <PartialCommonHeader>
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <TypeSpan :typewrite-text="pageName" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </PartialCommonHeader>
   <main>
     <MainContainer>
       <ContentList path="/blog" v-slot="{ list }">
@@ -14,10 +25,13 @@
             >
               {{group.key}}
               <span class="list-group-count"></span>
-              <i class="iconfont icon-arrowright">></i>
+              <i class="iconfont">
+                <Icon name="material-symbols:arrow-forward-ios-rounded" />
+              </i>
             </a>
             <NuxtLink :to="'/categories/' + group.key" class="category-count col-2 col-md-1 col-xm-1">
-              <i class="iconfont icon-articles">
+              <i class="iconfont">
+                <Icon name="pixelarticons:article-multiple" />
               </i>
               <span>{{group.count}}</span>
             </NuxtLink>
@@ -46,6 +60,11 @@
 import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
 import MainContainer from "~/views/MainContainer.vue";
+import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import {onMounted} from "#imports";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const pageName = "Categories"
 
@@ -92,8 +111,27 @@ const groupByCategories = (list: any[]): { key: string, group: { title: string, 
   }
 }
 
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
+
 </script>
-<style>
+<style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
 
 .category {
   margin-bottom: 1rem;

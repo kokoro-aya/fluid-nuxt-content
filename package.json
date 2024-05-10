@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "4.6.1",
     "sass": "^1.74.1",
-    "sass-loader": "^14.2.0"
+    "sass-loader": "^14.2.0",
+    "typed.js": "^2.1.0"
   }
 }

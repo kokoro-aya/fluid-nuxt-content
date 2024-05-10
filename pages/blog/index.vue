@@ -1,6 +1,22 @@
 <template>
 
-  <CommonHeader :title="slogan" />
+  <FullCommonHeader >
+    <NavBar :class="scrollHeight < 40 ? '' : 'top-nav-collapse' "/>
+    <div id="banner" class="banner" parallax="true">
+      <div class="full-bg-img">
+        <div id="mask" class="mask flex-center">
+          <div class="banner-text text-center fade-in-up">
+            <TypeSpan :typewrite-text="slogan" />
+          </div>
+          <div class="scroll-down-bar">
+            <i class="iconfont">
+              <Icon name="ph:arrow-fat-down-bold" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </FullCommonHeader>
   <main>
     <MainContainer>
       <ContentList :query="mkQuery(blogIndexPage, blogIndexShow)" v-slot="{ list }">
@@ -21,11 +37,15 @@
               </NuxtLink>
               <div class="index-btm post-metas">
                 <div class="post-meta mr-3">
-                  <i class="iconfont icon-date"></i>
+                  <i class="iconfont">
+                    <Icon name="material-symbols:calendar-month" />
+                  </i>
                   <time :datetime="article.date" pubdate>{{ article.date.slice(0, 10) }}</time>
                 </div>
                 <div class="post-meta mr-3 d-flex align-items-center">
-                  <i class="iconfont icon-category"></i>
+                  <i class="iconfont">
+                    <Icon name="tabler:category-2" />
+                  </i>
                   <span v-for="category in article.categories" :key="category"
                         class="category-chains">
                               <span class="category-chain">
@@ -37,7 +57,9 @@
                 </div>
                 <div v-for="tag in article.tags" :key="tag"
                      class="post-meta mr-3">
-                  <i class="iconfont icon-tags"></i>
+                  <i class="iconfont">
+                    <Icon name="mdi:tag-multiple-outline" />
+                  </i>
                   <NuxtLink :to="'/tags/' + tag"
                             class="category-chain-item">{{ tag }}</NuxtLink>
                 </div>
@@ -50,7 +72,9 @@
             <div>
               <a v-if="blogIndexPage > 0"
                  class="extend next" rel="next" @click="pageDecr">
-                <i class="iconfont icon-arrowright">Prev</i>
+                <i class="iconfont">
+                  <Icon name="material-symbols:keyboard-double-arrow-left-rounded" />
+                </i>
               </a>
             </div>
             <div v-for="index in pageIndices()" :key="index">
@@ -61,7 +85,9 @@
             <div>
               <a v-if="blogIndexPage < pageIndices().length - 1"
                  class="extend next" rel="next" @click="pageIncr">
-                <i class="iconfont icon-arrowright">Next</i>
+                <i class="iconfont">
+                  <Icon name="material-symbols:keyboard-double-arrow-right-rounded" />
+                </i>
               </a>
             </div>
           </div>
@@ -73,9 +99,12 @@
 <script setup lang="ts">
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
-import CommonHeader from "~/views/header/CommonHeader.vue";
 import {onMounted} from "#imports";
+import Typed from 'typed.js';
 import MainContainer from "~/views/MainContainer.vue";
+import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
+import NavBar from "~/views/header/NavBar.vue";
+import TypeSpan from "~/views/TypeSpan.vue";
 
 const slogan = "Just want to explore faraway landscapes"
 
@@ -129,9 +158,32 @@ const mkQuery = (page: number, show: number): QueryBuilderParams => {
   }
 }
 
+let scrollHeight = ref(0)
+
+let scrollListener = () => {
+  scrollHeight.value = window.scrollY
+}
+
+onMounted(() => {
+  scrollListener()
+  window.addEventListener('scroll', scrollListener)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollListener)
+})
+
 </script>
 
-<style>
+<style scoped>
+
+#banner {
+  background: url("/img/default.jpg") center center / cover no-repeat;
+}
+
+#header-inner {
+  height: 100vh;
+}
 
 #pagination {
   margin-top: -20px;
