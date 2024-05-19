@@ -8,6 +8,7 @@ Here are some next tasks to achieve:
 
 - Extraction and definition of project variables
 - Fix and finalization of the markdown/code snippet rendering
+- Browser go back in pagination
 - Excerpt
 - [x] ~~Scrolling animations~~, typewriting, ...
 - [x] Dynamically generated article pages
