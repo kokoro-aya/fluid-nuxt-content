@@ -39,11 +39,9 @@
   </main>
 </template>
 <script setup lang="ts">
-import CommonHeader from "~/views/header/CommonHeader.vue";
 import AsideSpacingContainer from "~/views/AsideSpacingContainer.vue";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
-import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 import {onMounted} from "#imports";
 import TypeSpan from "~/views/TypeSpan.vue";
 

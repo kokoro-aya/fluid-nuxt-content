@@ -73,7 +73,6 @@
   </main>
 </template>
 <script setup lang="ts">
-import CommonHeader from "~/views/header/CommonHeader.vue";
 import Footer from "~/views/Footer.vue";
 import {onMounted} from "#imports";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";

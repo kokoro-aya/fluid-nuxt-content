@@ -100,7 +100,6 @@
 
 import {QueryBuilderParams} from "@nuxt/content/dist/runtime/types";
 import {onMounted} from "#imports";
-import Typed from 'typed.js';
 import MainContainer from "~/views/MainContainer.vue";
 import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";

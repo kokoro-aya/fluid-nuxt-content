@@ -66,11 +66,9 @@
 
 import {onMounted, useRoute} from "#imports";
 import MainContainer from "~/views/MainContainer.vue";
-import CommonHeader from "~/views/header/CommonHeader.vue";
 import {Ref} from "@vue/reactivity";
 import PartialCommonHeader from "~/views/header/PartialCommonHeader.vue";
 import NavBar from "~/views/header/NavBar.vue";
-import FullCommonHeader from "~/views/header/FullCommonHeader.vue";
 import TypeSpan from "~/views/TypeSpan.vue";
 
 const route = useRoute()

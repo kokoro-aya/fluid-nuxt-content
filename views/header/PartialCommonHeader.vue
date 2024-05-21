@@ -10,8 +10,6 @@
 
 <script setup lang="ts">
 
-import NavBar from "~/views/header/NavBar.vue";
-
 </script>
 
 <style scoped>
