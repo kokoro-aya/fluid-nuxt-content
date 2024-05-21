@@ -17,5 +17,3 @@ public/img
 # ignore custom config setting
 fluid.config.ts
 blog.config.ts
-
-shiki/languages
