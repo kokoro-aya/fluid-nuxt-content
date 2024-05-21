@@ -11,6 +11,19 @@ export default defineNuxtConfig({
       clientDB: true,
       stripQueryParameters: false,
       advanceQuery: false,
+    },
+    highlight: {
+      theme: 'github-light',
+      preload: [
+        'haskell', 'kotlin', 'scala', 'java', 'csharp', 'cpp', 'swift', 'c'
+      ]
+    }
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: [
+        "typed.js"
+      ]
     }
   }
 })
